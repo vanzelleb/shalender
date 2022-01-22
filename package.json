@@ -11,6 +11,7 @@
     "sirv-cli": "^0.3.1"
   },
   "dependencies": {
+    "axios": "0.25.0",
     "svelte": "^3.32.3"
   },
   "scripts": {
@@ -20,6 +21,9 @@
     "start": "sirv public",
     "start:dev": "sirv public --dev"
   },
-  "keywords": ["svelte", "starter"],
+  "keywords": [
+    "svelte",
+    "starter"
+  ],
   "description": "Svelte example starter project"
 }

@@ -1,9 +1,16 @@
 <script>
-	let count = 0;
+		import axios from "axios";
 
-	function handleClick() {
-	  count += 1;
-	}
+		// Backend consists of Netlify functions that can access secret API keys
+		const backend = axios.create({
+		  baseURL: "https://shalendar.netlify.app/.netlify/functions/"
+		});
+
+		async function createEvent() {
+		  const { data } = await backend.get("addEvent", {
+		    params: { name: "test", date: "2022-01-22" }
+		  });
+		}
 </script>
 
 <style>
@@ -16,6 +23,6 @@
 	}
 </style>
 
-<button on:click={handleClick}>
-  Clicked {count} {count === 1 ? 'time' : 'times'}
+<button on:click={createEvent}>
+  Create event
 </button>
