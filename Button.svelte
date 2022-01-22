@@ -1,16 +1,18 @@
 <script>
-		import axios from "axios";
+	import axios from "axios";
 
-		// Backend consists of Netlify functions that can access secret API keys
-		const backend = axios.create({
-		  baseURL: "https://shalendar.netlify.app/.netlify/functions/"
-		});
+	// Backend consists of Netlify functions that can access secret API keys
+	const backend = axios.create({
+	  baseURL: "https://shalendar.netlify.app/.netlify/functions/"
+	});
 
-		async function createEvent() {
-		  const { data } = await backend.get("addEvent", {
-		    params: { name: "test", date: "2022-01-22" }
-		  });
-		}
+	async function createEvent() {
+	  const { data, error } = await backend.get("addEvent", {
+	    params: { name: "test", date: "2022-01-22" }
+	  });
+	  console.log("Data: ", data);
+	  console.log("Error: ", error);
+	}
 </script>
 
 <style>
