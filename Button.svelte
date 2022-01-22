@@ -1,17 +1,28 @@
 <script>
-	import axios from "axios";
+	//import axios from "axios";
+	import createClient from "@supabase/supabase-js";
 
 	// Backend consists of Netlify functions that can access secret API keys
-	const backend = axios.create({
-	  baseURL: "https://shalendar.netlify.app/.netlify/functions/"
-	});
+	// const backend = axios.create({
+	//   baseURL: "https://shalendar.netlify.app/.netlify/functions/"
+	// });
 
 	async function createEvent() {
-	  const { data, error } = await backend.get("addEvent", {
-	    params: { name: "test", date: "2022-01-22" }
-	  });
-	  console.log("Data: ", data);
-	  console.log("Error: ", error);
+	  /* 	  const { data, error } = await backend.get("addEvent", {
+		    params: { name: "test", date: "2022-01-22" }
+		  });
+		  console.log("Data: ", data);
+			console.log("Error: ", error); */
+
+	  const supabase = createClient(
+	    "https://jumyoetcqqeqmferdklb.supabase.co",
+	    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJvbGUiOiJhbm9uIiwiaWF0IjoxNjQyODczODc0LCJleHAiOjE5NTg0NDk4NzR9.8cBgXmf2_gvPn1znBLz8Wp1_zPkjkhJQwkmBgaXOhhw"
+	  );
+
+	  // Insert a row
+	  const { data, error } = await supabase
+	    .from("events")
+	    .insert([{ date: date, name: name }]);
 	}
 </script>
 
