@@ -1,0 +1,33 @@
+<script>
+		import { supabase } from "/supabase.js";
+		import { events } from "./sessionStore.js";
+		import { calendar, user } from "./sessionStore.js";
+
+		export let date;
+
+		async function book() {
+		  const event = { name: $user.user_metadata.name, date: date };
+		  // Insert an event into database
+		  const { data, error } = await supabase.from("events").insert([event]);
+		  if (error) console.error(error);
+		  else {
+		    event.booked = true;
+		    $calendar[date] = event;
+		    console.log("Booked: ", event);
+		  }
+		}
+</script>
+
+<style>
+	button {
+	  background: #ff3e00;
+	  color: white;
+	  border: none;
+	  padding: 8px 12px;
+	  border-radius: 2px;
+	}
+</style>
+
+<button on:click={book}>
+  I'm coming!
+</button>
