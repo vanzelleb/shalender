@@ -36,8 +36,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 6px 4px;
+    margin: 6px auto;
     height: 30px;
+    max-width: 400px
   }
 </style>
 
