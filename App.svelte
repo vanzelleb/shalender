@@ -1,7 +1,7 @@
 <script>
   import Auth from "./Auth.svelte";
   import Calendar from "./Calendar.svelte";
-  import { supabase } from "/supabase.js";
+  import { supabase } from "/supabaseClient.js";
   import { user } from "./sessionStore";
 
   user.set(supabase.auth.user());

@@ -1,7 +1,7 @@
 <script>
   import AddEvent from "./AddEvent.svelte";
   import { calendar, user } from "./sessionStore.js";
-  import { supabase } from "/supabase.js";
+  import { supabase } from "/supabaseClient.js";
 
   let date = new Date();
   getEvents();
@@ -38,7 +38,7 @@
     align-items: center;
     margin: 6px auto;
     height: 30px;
-    max-width: 400px
+    max-width: 400px;
   }
 </style>
 
