@@ -1,5 +1,5 @@
 <script>
-  import { supabase, signUp, signIn } from "./supabaseClient.js";
+  import { supabase, signUp, signIn } from "./dbClient.js";
 
   let loading = false;
   let email;

@@ -1,5 +1,5 @@
 <script>
-		import { supabase } from "./supabaseClient.js";
+		import { supabase } from "./dbClient.js";
 		import { calendar, user } from "./sessionStore.js";
 
 		export let date;
