@@ -1,7 +1,7 @@
 <script>
   import AddEvent from "./AddEvent.svelte";
   import { calendar, user } from "./sessionStore.js";
-  import { supabase } from "/supabaseClient.js";
+  import { supabase } from "./supabaseClient.js";
 
   let date = new Date();
   getEvents();

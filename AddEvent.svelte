@@ -1,12 +1,11 @@
 <script>
-		import { supabase } from "/supabaseClient.js";
-		import { events } from "./sessionStore.js";
+		import { supabase } from "./supabaseClient.js";
 		import { calendar, user } from "./sessionStore.js";
 
 		export let date;
 
 		async function book() {
-		  const event = { name: $user.user_metadata.name, date: date };
+		  const event = { name: $user?.user_metadata?.name, date: date };
 		  // Insert an event into database
 		  const { data, error } = await supabase.from("events").insert([event]);
 		  if (error) console.error(error);
