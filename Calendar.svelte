@@ -36,10 +36,10 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 6px auto;
+    margin: 0px auto;
     height: 30px;
     max-width: 400px;
-    padding: 8px;
+    padding: 4px 8px;
   }
 </style>
 
@@ -47,7 +47,7 @@
     { #if reservation.booked }
       <div class="box">
         <div>
-          { date }
+          { date }, {new Date(date).toLocaleString('en-us', {weekday:'short'})} 
         </div>
         <div>
           Reserved by { reservation.name }
@@ -56,7 +56,7 @@
     {:else }
       <div class="box">
         <div>
-          { date }
+          { date }, {new Date(date).toLocaleString('en-us', {weekday:'short'})} 
         </div>
         <AddEvent date={date} />
       </div>

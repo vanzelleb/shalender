@@ -14,9 +14,8 @@
 
 <style>
   main {
-    font-family: sans-serif;
+    font-family: Tahoma, sans-serif;
     text-align: center;
-    background-image: url("images/bg.jpg");
     height: 100vh;
     width: 100vw;
   }
@@ -26,7 +25,7 @@
 </style>
 
 <main>
-	<h2>Henning's & Despi's Alicante beach place</h2>
+	<h2>Henning's & Despi's Alicante Beach Place</h2>
   { #if $user }
 	  <h3>Hello { $user.user_metadata?.name }, let us know when you want to come!</h3>
          <Calendar />
