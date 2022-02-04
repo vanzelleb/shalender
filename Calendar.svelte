@@ -39,6 +39,7 @@
     margin: 6px auto;
     height: 30px;
     max-width: 400px;
+    padding: 8px;
   }
 </style>
 
