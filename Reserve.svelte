@@ -19,11 +19,9 @@
 
 <style>
 	button {
-	  background: #ff3e00;
-	  color: white;
-	  border: none;
-	  padding: 8px 12px;
-	  border-radius: 2px;
+	  padding: 5px 10px;
+	  border-radius: 4px;
+	  font-size: 1.1rem;
 	}
 </style>
 

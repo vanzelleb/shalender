@@ -1,9 +1,11 @@
 <script>
-  import AddEvent from "./AddEvent.svelte";
+  import Reserve from "./Reserve.svelte";
+  import Cancel from "./Cancel.svelte";
   import { calendar, user } from "./sessionStore.js";
   import { supabase } from "./dbClient.js";
 
   let date = new Date();
+  const options = { weekday: "short", month: "short", day: "numeric" };
   getEvents();
 
   function createCalendar(events) {
@@ -13,7 +15,6 @@
         .substring(0, 10);
       $calendar[day] = getReservation(day, events);
     }
-    console.log($calendar);
   }
 
   function getReservation(day, events) {
@@ -27,7 +28,6 @@
     const { data, error } = await supabase.from("events").select("*");
     if (error) alert(error);
     else createCalendar(data);
-    //console.log(data);
   }
 </script>
 
@@ -37,9 +37,10 @@
     justify-content: space-between;
     align-items: center;
     margin: 0px auto;
-    height: 30px;
+    height: 40px;
     max-width: 400px;
-    padding: 4px 8px;
+    padding: 4px 10px;
+    font-size: 1rem;
   }
 </style>
 
@@ -47,18 +48,23 @@
     { #if reservation.booked }
       <div class="box">
         <div>
-          { date }, {new Date(date).toLocaleString('en-us', {weekday:'short'})} 
+          { new Date(date).toLocaleString('en-us', options)}
+          <i>
+          (Booked by { reservation.name })
+          </i>
         </div>
         <div>
-          Reserved by { reservation.name }
+        {#if $user.user_metadata?.name == reservation.name }
+          <Cancel date={date} />
+        {/if}
         </div>
       </div>
     {:else }
       <div class="box">
         <div>
-          { date }, {new Date(date).toLocaleString('en-us', {weekday:'short'})} 
+          { new Date(date).toLocaleString('en-us', options)}
         </div>
-        <AddEvent date={date} />
+        <Reserve date={date} />
       </div>
     { /if }
   {/each}

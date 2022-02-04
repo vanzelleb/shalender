@@ -19,15 +19,22 @@
     height: 100vh;
     width: 100vw;
   }
-  h2 {
-    padding: 15px;
+  h1 {
+    margin: 0px;
+    padding: 20px 15px;
+  }
+  div {
+    font-size: 1.2rem;
   }
 </style>
 
 <main>
-	<h2>Henning's & Despi's Alicante Beach Place</h2>
+	<h1>Henning's & Despi's Alicante Beach P(a)lace</h1>
   { #if $user }
-	  <h3>Hello { $user.user_metadata?.name }, let us know when you want to come!</h3>
+	  <div>
+      Hello { $user.user_metadata?.name }, let us know when you want to come!
+    </div>
+    <p/>
          <Calendar />
   {:else}
         <Auth />

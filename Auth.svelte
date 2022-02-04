@@ -9,19 +9,6 @@
     registered = !registered;
     console.log("toggled");
   }
-
-  /*const handleLogin = async () => {
-        try {
-          loading = true;
-          const { error } = await supabase.auth.signIn({ email });
-          if (error) throw error;
-          alert("Check your email for the login link!");
-        } catch (error) {
-          alert(error.error_description || error.message);
-        } finally {
-          loading = false;
-        }
-      };*/
 </script>
 
 <style>
@@ -29,10 +16,51 @@
     font-size: 1rem;
     cursor: pointer;
   }
-  input {
+
+  input,
+  button {
     margin: 5px;
+    font-size: 1.2rem;
   }
-  h3 {
+
+  div {
+    font-size: 1.2rem;
+  }
+
+  button:after {
+    content: "";
+    position: absolute;
+    border: 1px solid #000000;
+    bottom: 4px;
+    left: 4px;
+    width: calc(100% - 1px);
+    height: calc(100% - 1px);
+  }
+
+  button {
+    margin: auto;
+    background-color: #3dd1e7;
+    border: 0 solid #e5e7eb;
+    box-sizing: border-box;
+    color: #000000;
+    display: flex;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.5rem;
+    padding: 0.5rem 1.65rem 0.75rem;
+    text-align: center;
+    text-decoration: none #000000 solid;
+    max-width: 460px;
+    position: relative;
+    cursor: pointer;
+    transform: rotate(-2deg);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+  }
+
+  button:hover {
+    background-color: #f7fafa;
   }
 </style>
 
@@ -40,7 +68,7 @@
  <div>
                 
                 {#if !registered }
-                <h3>Please sign up, so we know who's coming.</h3>
+                <div>Please sign up, so we know who's coming.</div>
                 <p/>
                 <u on:click={() => toggleLogin()}>Been there, done that</u>
                 {:else}
