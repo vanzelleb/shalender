@@ -19,14 +19,20 @@
 
   function getReservation(day, events) {
     for (event of events) {
-      if (event.date == day) return { date: day, booked: true, name: event.name };
+      if (event.date == day)
+        return {
+          date: day,
+          booked: true,
+          name: event.name,
+          email: event.email
+        };
     }
-    return { date: day, booked: false, name: "" };
+    return { date: day, booked: false, name: "", email: "" };
   }
 
   async function getEvents() {
     const { data, error } = await supabase.from("events").select("*");
-    if (error) alert(error);
+    if (error) console.error(error);
     else createCalendar(data);
   }
 </script>
@@ -54,7 +60,7 @@
           </i>
         </div>
         <div>
-        {#if $user.user_metadata?.name == reservation.name }
+        {#if $user.email == reservation.email }
           <Cancel date={date} />
         {/if}
         </div>

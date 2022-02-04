@@ -5,7 +5,11 @@
 		export let date;
 
 		async function book() {
-		  const event = { name: $user?.user_metadata?.name, date: date };
+		  const event = {
+		    name: $user?.user_metadata?.name,
+		    date: date,
+		    email: $user?.email
+		  };
 		  // Insert an event into database
 		  const { data, error } = await supabase.from("events").insert([event]);
 		  if (error) console.error(error);
