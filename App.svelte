@@ -16,16 +16,21 @@
   main {
     font-family: sans-serif;
     text-align: center;
+    background-image: url("images/bg.jpg");
+    height: 100vh;
+    width: 100vw;
+  }
+  h2 {
+    padding: 15px;
   }
 </style>
 
 <main>
 	<h2>Henning's & Despi's Alicante beach place</h2>
-	<h3>Hello { $user?.user_metadata?.name }, let us know when you want to come!</h3>
-      {#if $user}
+  { #if $user }
+	  <h3>Hello { $user.user_metadata?.name }, let us know when you want to come!</h3>
          <Calendar />
-    {:else}
+  {:else}
         <Auth />
-    {/if}
-
+  {/if}
 </main>

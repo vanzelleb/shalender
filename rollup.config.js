@@ -2,23 +2,22 @@
 // afect the deployment and dowload
 
 import svelte from "rollup-plugin-svelte";
-import resolve from "rollup-plugin-node-resolve";
-import commonjs from "rollup-plugin-commonjs";
-import { terser } from "rollup-plugin-terser";
+import resolve from "@rollup/plugin-node-resolve";
+import commonjs from "@rollup/plugin-commonjs";
 import json from "@rollup/plugin-json";
+import nodePolyfills from "rollup-plugin-polyfill-node";
 
 const production = !process.env.ROLLUP_WATCH;
 
 export default {
+  context: "this", // required for supabase realtime
   input: "index.js",
   output: {
-    sourcemap: true,
     format: "iife",
-    name: "app",
-    file: "public/bundle.js"
+    file: "public/bundle.js",
+    name: "App"
   },
   plugins: [
-    json(),
     svelte({
       // enable run-time checks when not in production
       dev: !production,
@@ -34,11 +33,13 @@ export default {
     // some cases you'll need additional configuration —
     // consult the documentation for details:
     // https://github.com/rollup/rollup-plugin-commonjs
-    resolve(),
+    resolve({ browser: true, preferBuiltins: true }),
     commonjs(),
+    json(),
+    nodePolyfills()
 
     // If we're building for production (npm run build
     // instead of npm run dev), minify
-    production && terser()
+    //production && terser()
   ]
 };

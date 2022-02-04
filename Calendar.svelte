@@ -7,7 +7,7 @@
   getEvents();
 
   function createCalendar(events) {
-    for (let i = 0; i < 20; i++) {
+    for (let i = 0; i < 365; i++) {
       const day = new Date(date.setDate(date.getDate() + 1))
         .toISOString()
         .substring(0, 10);
