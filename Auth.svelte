@@ -1,5 +1,5 @@
 <script>
-  import { supabase, signUp, magicLogin } from "./dbClient.js";
+  import { supabase, signUp, login, magicLogin } from "./dbClient.js";
 
   let email;
   let name;
@@ -85,7 +85,7 @@
                 {#if !registered }
                   <button on:click={signUp(email, name)}>Sign Up</button>
                 {:else }
-                  <button on:click={magicLogin(email)}>Send magic link</button>
+                  <button on:click={login(email)}>Login</button>
                 {/if}
 
             <!--<form on:submit|preventDefault={handleLogin}>
