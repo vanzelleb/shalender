@@ -38,5 +38,7 @@
          <Calendar />
   {:else}
         <Auth />
+        <p/>
+        <a href="https://goo.gl/maps/nXwv7ppDKepRo4mi6">See where we live in Google Maps</a>
   {/if}
 </main>
