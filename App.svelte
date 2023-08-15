@@ -32,7 +32,7 @@
 	<h1>Henning's & Despi's Alicante Beach P(a)lace</h1>
   { #if $user }
 	  <div>
-      Hello { $user.user_metadata?.name }, let us know when you want to come!
+      Hello { $user.user_metadata?.name }, let us know when you'd like to visit us.
     </div>
     <p/>
          <Calendar />

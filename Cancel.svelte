@@ -23,6 +23,8 @@
 	  padding: 5px 10px;
 	  border-radius: 4px;
 	  font-size: 1.1rem;
+	  background-color: #f67280;
+	  color: white;
 	}
 </style>
 
